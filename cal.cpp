@@ -107,7 +107,7 @@ string transform(string expression)
         expression = '0' + expression;
     }
     node *l = new node();//创建栈
-    for(int i = 0;i < expression.size();i++)//开始利用栈从头到尾创建逆波兰表达式
+    for(int i = 0;i < expression.size();)//开始利用栈从头到尾创建逆波兰表达式
     {
         if(isNumber(expression[i]))//识别数字并将其加到波兰表达式中
         {
@@ -117,7 +117,6 @@ string transform(string expression)
                 i++;
             }
             inverse += ' ';
-            i--;
         }else//字符串中当前项是运算符或括号的情况
         {
             if(l->getEnd()==l||l->getEnd()->getValue()=='(')//若空栈或栈顶左括号，则直接压入
@@ -171,7 +170,8 @@ string transform(string expression)
                     pop_back(l);
                 }
                 pop_back(l);
-            } 
+            }
+            i++;
         }   
     }
     //执行完毕后将栈中剩余元素全部弹出
