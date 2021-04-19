@@ -42,46 +42,36 @@ void merge(int* A, int p, int r, int q)
     //create three vectors to store numbers
     vector<int> v1;
     vector<int> v2;
-    vector<int> v;
-    for (int k = p; k <= r; k++)
-    {
-        v1.push_back(*(A + k));//store left
-    }
-    for (int k = r + 1; k <= q; k++)
-    {
-        v2.push_back(*(A + k));//store right
-    }
+    for (int k = p; k <= r; k++)    
+        v1.push_back(*(A + k));//store left    
+    for (int k = r + 1; k <= q; k++)   
+        v2.push_back(*(A + k));//store right   
     //merge the two parts
     int i = 0, j = 0;
-    for (int k = 0; k < q - p + 1; k++)
+    for (int k = p; k <= q; k++)
     {
         if (i == v1.size())
         {
-            v.push_back(v2[j]);
+            *(A + k) = v2[j];
             j++;
         }
         else if (j == v2.size())
         {
-            v.push_back(v1[i]);
+            *(A + k) = v1[i];
             i++;
         }
         else
         {
             if (v1[i] < v2[j])
             { 
-                v.push_back(v1[i]);
+                *(A + k) = v1[i];
                 i++;
             }
             else
             {
-                v.push_back(v2[j]);
+                *(A + k) = v2[j];
                 j++;
             }                   
         }
-    }
-    //change the value of the array 
-    for (int i = p; i <= q; i++)
-    {
-        *(A + i) = v[i-p];
     }
 }
