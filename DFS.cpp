@@ -24,10 +24,6 @@ void DFS(int n)
     b[n] = 1;
     cout << (char)('A' + n);
     for (int i = 0; i < 5; i++)    
-        if (g[n][i] && b[i] == 0)
-        {
-            b[i] = 1;
-            DFS(i);
-        }
-                        
+        if (g[n][i] && b[i] == 0)                    
+            DFS(i);                               
 }
