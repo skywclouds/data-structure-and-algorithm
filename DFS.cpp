@@ -1,4 +1,4 @@
-﻿//深度有限搜索
+﻿//深度优先搜索
 //Author: Henry Wang
 //Date: 2021-9-6
 #include <iostream>
@@ -24,6 +24,10 @@ void DFS(int n)
     b[n] = 1;
     cout << (char)('A' + n);
     for (int i = 0; i < 5; i++)    
-        if (g[n][i] && b[i] == 0)        
-            DFS(i);            
+        if (g[n][i] && b[i] == 0)
+        {
+            b[i] = 1;
+            DFS(i);
+        }
+                        
 }
